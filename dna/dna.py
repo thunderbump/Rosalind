@@ -24,9 +24,11 @@ if(len(sys.argv) > 2):
 	sys.exit(1)
 elif(len(sys.argv) == 2):
 	test = False
-#	try
-	data_file_object = open(sys.argv[1])
-#	except
+	try:
+		data_file_object = open(sys.argv[1])
+	except IOError, error:
+		print(error)
+		sys.exit(1)
 else:
 	data_file_object = open(test_data_file)
 
