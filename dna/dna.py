@@ -28,6 +28,7 @@ elif(len(sys.argv) == 2):
 		data_file_object = open(sys.argv[1])
 	except IOError, error:
 		print(error)
+		print(usage)
 		sys.exit(1)
 else:
 	data_file_object = open(test_data_file)
