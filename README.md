@@ -9,7 +9,7 @@ Solved  Ex   abbv  long name
      Y  03:  revc  Reverse Complement
      Y  04:  hamm  Counting Point Mutations
      Y  05:  prot  Protein Translation
-        06:  subs  Finding a Motif in DNA
+     Y  06:  subs  Finding a Motif in DNA
         07:  cons  Consensus and Profile
         08:    gc  GC Content
         09:  grph  Overlap Graphs
@@ -18,4 +18,6 @@ Solved  Ex   abbv  long name
         12:   orf  Open Reading Frames
         13:  perm  Enumerating Gene Orders
         14:  prtm  Calculating Protein Mass
+        15:  revp  Locating Restriction Sites
+        16:  splc  RNA Splicing
 ```

@@ -39,7 +39,9 @@ elif(argc == 2):
 		data = data_file.readline()
 		data_file.close()
 	except IOError, error:
-		pass
+		print(error)
+		print(usage)
+		sys.exit(1)
 else:
 	data = raw_input()
 print(acid_translate(data))
