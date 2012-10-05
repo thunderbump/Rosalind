@@ -19,15 +19,15 @@ def acid_translate(acid_string):
 		sys.exit(1)
 	translated_string = ""
 	current_char_weight = 0
-	current_char_progress = 3
+	current_char_progress = 2
 	for char in acid_string:
-		current_char_weight += (acid_weights[char] * 4 *
-				        current_char_progress)
+		current_char_weight += acid_weights[char] * (
+					4 ** current_char_progress)
 		current_char_progress -= 1
-		if(current_char_progress == 1):
+		if(current_char_progress == -1):
+			current_char_progress = 2
 			translated_string += weight_translation[
 						current_char_weight]
-			current_char_progress = 3
 			current_char_weight = 0
 	return translated_string
 
