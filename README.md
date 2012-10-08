@@ -10,8 +10,8 @@ Solved  Ex   abbv  long name
      Y  04:  hamm  Counting Point Mutations
      Y  05:  prot  Protein Translation
      Y  06:  subs  Finding a Motif in DNA
-        07:  cons  Consensus and Profile
-        08:    gc  GC Content
+     Y  07:  cons  Consensus and Profile
+     Y  08:    gc  GC Content
         09:  grph  Overlap Graphs
         10:   lcs  Finding a Shared Motif
         11:  mrna  Inferring mRNA from Protein
@@ -20,4 +20,7 @@ Solved  Ex   abbv  long name
         14:  prtm  Calculating Protein Mass
         15:  revp  Locating Restriction Sites
         16:  splc  RNA Splicing
+        17:  lexf  Enumerating k-mers Lexicographically
+        18:  long  Genome Assembly as Shortest Superstring
+        19:  prob  Introduction to Probability
 ```
