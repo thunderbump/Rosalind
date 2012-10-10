@@ -27,41 +27,22 @@ except IOError, error:
 	print(usage)
 	sys.exit(1)
 
-def is_substring(super_str, sub_str):
-	index = 0
-	final_index = len(super_str)
-	subindex = 0
-	final_subindex = len(sub_str)
-	substring_found = False
-	broken = False
-
-	while(index < final_index):
-		if(super_str[index] == sub_str[0]):
-			if(final_subindex == 1):
-				substring_locations.append(index + 1)
-			elif(index + final_subindex > final_index):
-				break
-			else:
-				while((subindex < final_subindex) and 
-				      (subindex + index < final_index)):
-					if(super_str[index + subindex] ==
-					   sub_str[subindex]):
-						subindex += 1
-					else:
-						broken = True
-						break
-				if not broken:
-					substring_found = True
-				else:
-					broken = False
-				subindex = 0
-		index += 1
-	return substring_found
-
 def find_substrings(super_str, sub_str):
-	pass
+	substrings = ['']
+	for str_index in range(0,len(sub_str) + 1):
+		current_sub_str = ''
+		for index in range(str_index,len(sub_str) + 1):
+			if(sub_str[str_index:index] in super_str):
+				current_sub_str = sub_str[str_index:index]
+		if(current_sub_str != [] and current_sub_str not in 
+							substrings[-1]):
+			substrings.append(current_sub_str)
+	substrings.remove(substrings[0])
+	return substrings
+				
 
-print 'asdf' in 'das'
+print find_substrings("asre sdwqdf asd", "asdf")
+
 
 
 #finding_substring = False
