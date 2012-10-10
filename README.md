@@ -13,7 +13,7 @@ Solved  Ex   abbv  long name
      Y  07:  cons  Consensus and Profile
      Y  08:    gc  GC Content
      Y  09:  grph  Overlap Graphs
-        10:   lcs  Finding a Shared Motif
+     Y  10:   lcs  Finding a Shared Motif
         11:  mrna  Inferring mRNA from Protein
         12:   orf  Open Reading Frames
         13:  perm  Enumerating Gene Orders

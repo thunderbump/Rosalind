@@ -39,9 +39,23 @@ def find_substrings(super_str, sub_str):
 			substrings.append(current_sub_str)
 	substrings.remove(substrings[0])
 	return substrings
-				
+		
+sub_string_list = [sequences[0]]
+for sequence_index in range(1, len(sequences)):
+	tmp_new_sub_string = []
+	for substring in sub_string_list:
+		new_sub_strings = find_substrings(sequences[sequence_index],
+						  substring)
+		for new_sub_string in new_sub_strings:
+			tmp_new_sub_string.append(new_sub_string)
+	sub_string_list = tmp_new_sub_string
+biggest_sub_str = ''
+for substr in sub_string_list:
+	if len(substr) > len(biggest_sub_str):
+		biggest_sub_str = substr
+print biggest_sub_str 
+	
 
-print find_substrings("asre sdwqdf asd", "asdf")
 
 
 
