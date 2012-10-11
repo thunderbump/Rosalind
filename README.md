@@ -22,9 +22,11 @@ Solved  Ex   abbv  long name
         16:  splc  RNA Splicing
         17:  lexf  Enumerating k-mers Lexicographically
         18:  long  Genome Assembly as Shortest Superstring
-        19:  prob  Introduction to Probability
+     Y  19:  prob  Introduction to Probability
         20:  rear  Reversal Distance
         21:  sign  Enumerating Oriented Gene Orderings
         22:  sseq  Finding a Spliced Motif
         23:  tree  Completing a Tree
+        24:  kmer  k-Mer Composition
+        25:   kmp  Speeding Up Motif Finding
 ```
