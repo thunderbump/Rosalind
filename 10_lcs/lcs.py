@@ -54,20 +54,3 @@ for substr in sub_string_list:
 	if len(substr) > len(biggest_sub_str):
 		biggest_sub_str = substr
 print biggest_sub_str 
-	
-
-
-
-
-#finding_substring = False
-#substrings = sequences[0]
-#sequence_index = 0
-#max_sequence_index = len(sequences)
-#while sequence_index < max_sequence_index:
-#	index_break = False
-#	str_index = 0
-#	max_str_index = len(sequences[sequence_index])
-#	substr_index = 1
-#	while str_index < max_str_index - 1:
-#		if(is_substring(sequence[sequence_index], 
-#	sequence_index += 1

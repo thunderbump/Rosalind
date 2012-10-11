@@ -14,7 +14,7 @@ Solved  Ex   abbv  long name
      Y  08:    gc  GC Content
      Y  09:  grph  Overlap Graphs
      Y  10:   lcs  Finding a Shared Motif
-        11:  mrna  Inferring mRNA from Protein
+     Y  11:  mrna  Inferring mRNA from Protein
         12:   orf  Open Reading Frames
         13:  perm  Enumerating Gene Orders
         14:  prtm  Calculating Protein Mass
