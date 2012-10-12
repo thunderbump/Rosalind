@@ -18,7 +18,7 @@ Solved  Ex   abbv  long name
      Y  12:   orf  Open Reading Frames
      Y  13:  perm  Enumerating Gene Orders
      Y  14:  prtm  Calculating Protein Mass
-        15:  revp  Locating Restriction Sites
+     Y  15:  revp  Locating Restriction Sites
         16:  splc  RNA Splicing
         17:  lexf  Enumerating k-mers Lexicographically
         18:  long  Genome Assembly as Shortest Superstring
