@@ -17,7 +17,7 @@ Solved  Ex   abbv  long name
      Y  11:  mrna  Inferring mRNA from Protein
      Y  12:   orf  Open Reading Frames
      Y  13:  perm  Enumerating Gene Orders
-        14:  prtm  Calculating Protein Mass
+     Y  14:  prtm  Calculating Protein Mass
         15:  revp  Locating Restriction Sites
         16:  splc  RNA Splicing
         17:  lexf  Enumerating k-mers Lexicographically
