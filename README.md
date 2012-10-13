@@ -20,7 +20,7 @@ Solved  Ex   abbv  long name
      Y  14:  prtm  Calculating Protein Mass
      Y  15:  revp  Locating Restriction Sites
      Y  16:  splc  RNA Splicing
-        17:  lexf  Enumerating k-mers Lexicographically
+     Y  17:  lexf  Enumerating k-mers Lexicographically
         18:  long  Genome Assembly as Shortest Superstring
      Y  19:  prob  Introduction to Probability
         20:  rear  Reversal Distance
