@@ -40,11 +40,45 @@ except IOError, error:
     print(error)
     print(usage)
     sys.exit(1)
-
-source_perm = source_perms[0]
-dest_perm = dest_perms[0]
-max_depth = len(source_perms[0]) - 1
-if source_perm != dest_perm:
-    for index in range(0, len(source_perm) - 1):
-        for subindex in range(index + 1, len(source_perm)):
-            print source_perm[index:subindex][::-1]
+def permute(source, dest, depth, visited={}):
+    #print depth
+    #source_perm = source_perms[0]
+    #dest_perm = dest_perms[0]
+    if not visited.has_key(str(source)):
+        visited[str(source)] = depth
+        #for key in visited.keys():
+        #    if key == source:
+        #        print "wtf\n%s\n%s" % (source, key)
+        #        raw_input()
+    else:
+        if visited[str(source)] > depth:
+            visited[str(source)] = depth
+#        print("!"),
+        else:
+            return
+    if depth < 6:
+        for thing in range(0, depth):
+            print("-"),
+        print "%d\n" % len(visited),
+    if depth >= len(source) - 1:
+    #if depth >= 5:
+        return
+    max_depth = len(source) - 1
+    if source != dest:
+        for start_index in range(0, len(source) - 2):
+            for end_index in range(start_index + 2, len(source)):
+                next_step = source[:start_index]
+                for item in source[start_index:end_index][::-1]:
+                    next_step.append(item)
+                for item in source[end_index:]:
+                    next_step.append(item)
+                permute(next_step, dest, depth + 1, visited)
+                
+    else:
+        print depth
+    return visited
+        
+#print sum(a for a in source_perms[0])
+print source_perms[0], '\n', dest_perms[0]
+val = 0
+print permute(source_perms[val], dest_perms[val], 0)[str(dest_perms[val])]
