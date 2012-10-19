@@ -40,7 +40,8 @@ except IOError, error:
     print(error)
     print(usage)
     sys.exit(1)
-def permute(source, dest, depth, visited={}):
+
+def permute(source, path_str="", depth=0, visited={}):
     #print depth
     #source_perm = source_perms[0]
     #dest_perm = dest_perms[0]
@@ -56,29 +57,30 @@ def permute(source, dest, depth, visited={}):
 #        print("!"),
         else:
             return
-    if depth < 6:
-        for thing in range(0, depth):
-            print("-"),
-        print "%d\n" % len(visited),
     if depth >= len(source) - 1:
     #if depth >= 5:
         return
     max_depth = len(source) - 1
-    if source != dest:
-        for start_index in range(0, len(source) - 2):
-            for end_index in range(start_index + 2, len(source)):
-                next_step = source[:start_index]
-                for item in source[start_index:end_index][::-1]:
-                    next_step.append(item)
-                for item in source[end_index:]:
-                    next_step.append(item)
-                permute(next_step, dest, depth + 1, visited)
-                
-    else:
-        print depth
+    for start_index in range(0, len(source) - 2):
+        if depth < 5:
+            print(" ".join([path_str, str(start_index)]))
+        for end_index in range(start_index + 2, len(source)):
+            next_step = source[:start_index]
+            for item in source[start_index:end_index][::-1]:
+                next_step.append(item)
+            for item in source[end_index:]:
+                next_step.append(item)
+            if depth >= 5:
+                permute(next_step, "", depth + 1, visited)
+            else:
+                permute(next_step, " ".join([path_str, str(start_index)]),
+                        depth + 1, visited)
+               
     return visited
         
 #print sum(a for a in source_perms[0])
 print source_perms[0], '\n', dest_perms[0]
 val = 0
-print permute(source_perms[val], dest_perms[val], 0)[str(dest_perms[val])]
+asdf = open("asdf", 'w')
+asdf.write(str(permute(source_perms[val])))
+asdf.close()
