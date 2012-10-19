@@ -3,6 +3,8 @@
 
 import sys
 import string
+import ast
+import random
 
 argc = len(sys.argv)
 data_file_loc = "test_data"
@@ -56,10 +58,10 @@ def permute(source, path_str="", depth=0, visited={}):
             visited[str(source)] = depth
 #        print("!"),
         else:
-            return
+            return visited
     if depth >= len(source) - 1:
     #if depth >= 5:
-        return
+        return visited
     max_depth = len(source) - 1
     for start_index in range(0, len(source) - 2):
         if depth < 5:
@@ -81,6 +83,17 @@ def permute(source, path_str="", depth=0, visited={}):
 #print sum(a for a in source_perms[0])
 print source_perms[0], '\n', dest_perms[0]
 val = 0
-asdf = open("asdf", 'w')
-asdf.write(str(permute(source_perms[val])))
-asdf.close()
+
+reference_file = open("dict_reference", 'r')
+try:
+    saved_dict = ast.literal_eval(reference_file.readline())
+except:
+    saved_dict = {}
+reference_file.close()
+
+
+#permute(source_perms[val], "", 0, saved_dict)
+reference_file = open("dict_reference", 'w')
+
+reference_file.write(str(permute(source_perms[val], "", 0, saved_dict)))
+reference_file.close()
