@@ -87,20 +87,34 @@ def permute(source, path_str="", depth=0, visited={}):
         
 #print sum(a for a in source_perms[0])
 reference_file = open("dict_reference", 'r')
+saved_dict = {}
 try:
 #    saved_dict = ast.literal_eval(reference_file.readline())
-    saved_dict = eval(reference_file.readline())
+#    saved_dict = eval(reference_file.readline())
+    for index, line in enumerate(reference_file):
+        if line[-1] == '\n':
+            line = line[:-1]
+        if line[-1] == '\r':
+            line = line[:-1]
+        if index % 2 == 0:
+            perm_key = line
+        else:
+            saved_dict[perm_key] = int(line)
+            
 except:
-    saved_dict = {}
+    print("no saved dict found")
 reference_file.close()
 
 if build:
     reference_file = open("dict_reference", 'w')
-    reference_file.write(str(permute(base_perm, "", 0, saved_dict)))
+    saved_dict = permute(base_perm, '', 0, saved_dict)
+    for key in saved_dict.keys():
+        reference_file.write("%s\n" % str(key))
+        reference_file.write("%d\n" % saved_dict[key])
     reference_file.close()
 
 
-for index, perm in enumerate(source_perms[1:]):
+for index, perm in enumerate(source_perms):
     perm_trans = {}
     index_trans = {}
     for perm_index, item in enumerate(perm):
@@ -109,4 +123,9 @@ for index, perm in enumerate(source_perms[1:]):
     #for char in dest_perms[index]:
     #    print "%r" % char
     #print perm_trans, index_trans
-    print(saved_dict[str(list(perm_trans[item] for item in dest_perms[index]))]),
+#    print(saved_dict[str(list(perm_trans[item] for item in dest_perms[index]))])
+    print "-----"
+    print perm
+    print list(perm_trans[item] for item in source_perms[index])
+    print(saved_dict[str(list(index_trans[item] for item in dest_perms[index]))])
+    print list(perm_trans[item] for item in dest_perms[index])
