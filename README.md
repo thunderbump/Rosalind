@@ -28,7 +28,7 @@ Solved  Ex     abbv  long name
         22  :  sseq  Finding a Spliced Motif
         23  :  tree  Completing a Tree
         23.0:  corr  Error Correction in Reads
-        23.1:  eval  Introduction to Expected Value
+     Y  23.1:  eval  Introduction to Expected Value
         23.2:  inod  Counting Phylogenetic Ancestors
         24  :  kmer  k-Mer Composition
         25  :   kmp  Speeding Up Motif Finding

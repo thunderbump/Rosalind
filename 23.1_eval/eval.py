@@ -35,7 +35,6 @@ try:
     gc_vals = []
     for val in gc_vals_str:
         gc_vals.append(float(val))
-    print substring_len, supstring_len, gc_vals
 except IOError, error:
     print(usage)
     print(error)
@@ -43,11 +42,14 @@ except IOError, error:
 except ValueError:
     print("Corrupt DB.")
     sys.exit(1)
-#wrong...way wrong. need my books :P
+
+substrings_expected = []
 for gc_value in gc_vals:
     pgc = gc_value / 2
     pat = (1 - gc_value) / 2
     p_identical_char = 2 * (pgc ** 2) + 2 * (pat ** 2)
     p_substring = p_identical_char ** substring_len
-    p_substring_exists = 1 - (p_substring ** (supstring_len - substring_len))
-    print(p_substring_exists, p_substring, p_identical_char)
+    substrings_expected.append(p_substring * (supstring_len -
+                                              substring_len + 1))
+for expected in substrings_expected:
+    print("%1.6f" % expected),
