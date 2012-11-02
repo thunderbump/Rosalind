@@ -24,7 +24,7 @@ Solved  Ex     abbv  long name
      Y  18  :  long  Genome Assembly as Shortest Superstring
      Y  19  :  prob  Introduction to Probability
         20  :  rear  Reversal Distance
-        21  :  sign  Enumerating Oriented Gene Orderings
+     Y  21  :  sign  Enumerating Oriented Gene Orderings
         22  :  sseq  Finding a Spliced Motif
         23  :  tree  Completing a Tree
         23.0:  corr  Error Correction in Reads
