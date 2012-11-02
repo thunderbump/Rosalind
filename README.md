@@ -30,7 +30,7 @@ Solved  Ex     abbv  long name
         23.0:  corr  Error Correction in Reads
      Y  23.1:  eval  Introduction to Expected Value
         23.2:  inod  Counting Phylogenetic Ancestors
-        24  :  kmer  k-Mer Composition
+     Y  24  :  kmer  k-Mer Composition
         25  :   kmp  Speeding Up Motif Finding
         26  :  lcsq  Finding a Shared Spliced Motif
         27  :  lexv  Ordering Strings of Varying Length Lexicographically
