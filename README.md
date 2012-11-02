@@ -33,5 +33,5 @@ Solved  Ex     abbv  long name
      Y  24  :  kmer  k-Mer Composition
         25  :   kmp  Speeding Up Motif Finding
         26  :  lcsq  Finding a Shared Spliced Motif
-        27  :  lexv  Ordering Strings of Varying Length Lexicographically
+     Y  27  :  lexv  Ordering Strings of Varying Length Lexicographically
 ```
