@@ -36,42 +36,47 @@ def print_matrix(seq1, seq2):
         for j in range(len(matrix)):
             print('%3d' % matrix[j][i]),
         print
-    sequence_comparison(seq1, seq2)
+    #sequence_comparison(seq1, seq2)
     #print("%s\n%s" % sequence_comparison(seq1, seq2))
+
+def local_maxes(matrix):
+    local_max = []
+    for i in range(1, len(matrix) - 1):
+        for j in range(1, len(matrix[0]) - 1):
+            if(matrix[i-1][j-1] <= matrix[i][j] > matrix[i+1][j+1] and
+               matrix[i-1][j] <= matrix[i][j] > matrix[i+1][j] and
+               matrix[i-1][j+1] <= matrix[i][j] > matrix[i+1][j-1] and
+               matrix[i][j-1] <= matrix[i][j] > matrix[i][j+1]):
+
+                local_max.append((i,j))
+
+    for i in range(1, len(matrix) - 1):
+        if(matrix[i-1][-1-1] <= matrix[i][-1] and
+           matrix[i-1][-1] <= matrix[i][-1] > matrix[i+1][-1] and
+           matrix[i][-1] >= matrix[i+1][-1-1] and
+           matrix[i][-1-1] <= matrix[i][-1]):
+
+            local_max.append((i,j))
+
+    for j in range(1, len(matrix[0]) - 1):
+        if(matrix[-1-1][j-1] <= matrix[-1][j] and
+           matrix[-1-1][j] <= matrix[-1][j] and
+           matrix[-1-1][j+1] <= matrix[-1][j] and
+           matrix[-1][j-1] <= matrix[-1][j] > matrix[-1][j+1]):
+
+            local_max.append((i,j))
+
+    if(matrix[-2][-2] <= matrix[-1][-1] and
+       matrix[-2][-1] <= matrix[-1][-1] and
+       matrix[-1][-2] <= matrix[-1][-1]):
+
+        local_max.append((len(matrix) - 1, len(matrix[0]) - 1))
+
+    return local_max
 
 def sequence_comparison(seqi, seqj):
     matrix = build_matrix(seqi, seqj)
-    local_max = []
-    #local_max_val = []
-
-    for i in range(1, len(matrix) - 1):
-        for j in range(1, len(matrix[0]) - 1):
-            if(matrix[i-1][j-1] < matrix[i][j] > matrix[i+1][j+1] and
-               matrix[i-1][j] < matrix[i][j] > matrix[i+1][j] and
-               matrix[i-1][j+1] < matrix[i][j] > matrix[i+1][j-1] and
-               matrix[i][j-1] < matrix[i][j] > matrix[i][j+1]):
-                local_max.append((i,j))
-                #local_max_val.append(matrix[i][j])
-    for i in range(1, len(matrix) - 1):
-        if(matrix[i-1][-1-1] < matrix[i][-1] and
-           matrix[i-1][-1] < matrix[i][-1] > matrix[i+1][-1] and
-           matrix[i][-1] > matrix[i+1][-1-1] and
-           matrix[i][-1-1] < matrix[i][-1]):
-            local_max.append((i,j))
-            #local_max_val.append(matrix[i][j])
-    for j in range(1, len(matrix[0]) - 1):
-        if(matrix[-1-1][j-1] < matrix[-1][j] and
-           matrix[-1-1][j] < matrix[-1][j] and
-           matrix[-1-1][j+1] < matrix[-1][j] and
-           matrix[-1][j-1] < matrix[-1][j] > matrix[-1][j+1]):
-            local_max.append((i,j))
-            #local_max_val.append(matrix[i][j])
-    if(matrix[-2][-2] < matrix[-1][-1] and
-       matrix[-2][-1] < matrix[-1][-1] and
-       matrix[-1][-2] < matrix[-1][-1]):
-        local_max.append((len(matrix) - 1, len(matrix[0]) - 1))
-        #local_max_val.append(matrix[-1][-1])
-
+    local_max = local_maxes(matrix)
     removals = []
     for index, lmax in enumerate(local_max):
         if lmax[0] >= len(matrix) - 1 or lmax[1] >= len(matrix[0]) - 1:
@@ -93,21 +98,24 @@ def sequence_comparison(seqi, seqj):
         j = start[1]
         pairs.append((seqi[i], seqj[j]))
         while matrix[i][j] != 0:
-            if matrix[i-1][j-1] > max(matrix[i-1][j], matrix[i][j-1]):
-                i -= 1
-                j -= 1
+            print seqi[i], seqj[j]
+            if matrix[i-1][j-1] >= max(matrix[i-1][j], matrix[i][j-1]):
                 pairs[-1] = (''.join([seqi[i],pairs[-1][0]]),
                              ''.join([seqj[j],pairs[-1][1]]))
+                i -= 1
+                j -= 1
             #elif matrix[i-1][j] == matrix[i][j-1]:
                 #recursively split the matrices?
             elif matrix[i-1][j] > matrix[i][j-1]:
-                i -= 1
                 pairs[-1] = (''.join([seqi[i], pairs[-1][0]]), 
                              ''.join(['-', pairs[-1][1]]))
+                i -= 1
             else:
-                j -= 1
                 pairs[-1] = (''.join(['-', pairs[-1][0]]),
                              ''.join([seqj[j], pairs[-1][1]]))
+                j -= 1
+            print i, j
+        print pairs
     for seq in pairs:
         print seq[0], '\n', seq[1]
 
@@ -166,5 +174,6 @@ if __name__ == "__main__":
         print(error)
         sys.exit(1)
 
-    print sequence_comparison(data[0], data[1])
-    #print_matrix(data[0], data[1])
+    #print sequence_comparison(data[0], data[1])
+    print_matrix(data[0], data[1])
+    print local_maxes(build_matrix(data[0], data[1]))
