@@ -45,7 +45,7 @@ def local_maxes(matrix):
         for j in range(1, len(matrix[0]) - 1):
             if(matrix[i-1][j-1] <= matrix[i][j] > matrix[i+1][j+1] and
                matrix[i-1][j] <= matrix[i][j] > matrix[i+1][j] and
-               matrix[i-1][j+1] <= matrix[i][j] > matrix[i+1][j-1] and
+               #matrix[i-1][j+1] <= matrix[i][j] > matrix[i+1][j-1] and
                matrix[i][j-1] <= matrix[i][j] > matrix[i][j+1]):
 
                 local_max.append((i,j))
@@ -53,7 +53,7 @@ def local_maxes(matrix):
     for i in range(1, len(matrix) - 1):
         if(matrix[i-1][-1-1] <= matrix[i][-1] and
            matrix[i-1][-1] <= matrix[i][-1] > matrix[i+1][-1] and
-           matrix[i][-1] >= matrix[i+1][-1-1] and
+           #matrix[i][-1] >= matrix[i+1][-1-1] and
            matrix[i][-1-1] <= matrix[i][-1]):
 
             local_max.append((i,j))
@@ -61,7 +61,7 @@ def local_maxes(matrix):
     for j in range(1, len(matrix[0]) - 1):
         if(matrix[-1-1][j-1] <= matrix[-1][j] and
            matrix[-1-1][j] <= matrix[-1][j] and
-           matrix[-1-1][j+1] <= matrix[-1][j] and
+           #matrix[-1-1][j+1] <= matrix[-1][j] and
            matrix[-1][j-1] <= matrix[-1][j] > matrix[-1][j+1]):
 
             local_max.append((i,j))
@@ -177,3 +177,5 @@ if __name__ == "__main__":
     #print sequence_comparison(data[0], data[1])
     print_matrix(data[0], data[1])
     print local_maxes(build_matrix(data[0], data[1]))
+    print_matrix(data[1], data[0])
+    print local_maxes(build_matrix(data[1], data[0]))
