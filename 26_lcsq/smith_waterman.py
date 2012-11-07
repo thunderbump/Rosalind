@@ -3,6 +3,7 @@
 
 import sys
 import string
+from array import array
 
 argc = len(sys.argv)
 data_file_loc = "test_data"
@@ -14,6 +15,10 @@ def build_matrix(seq1, seq2):
     """Builds a smith_waterman matrix from seq1 and seq2"""
     matrix = list(list(0 for entry in range(len(seq2))) for other_entry
                   in range(len(seq1)))
+    #array implimentation 2-3x slower, blist implementation doesn't finish
+    #5 minutes.
+    #matrix = list(array('L', (0 for entry in range(len(seq2)))) for other_entry
+    #              in range(len(seq1)))
     for i in range(1, len(matrix)):
         for j in range(1, len(matrix[i])):
             if seq1[i] == seq2[j]:
@@ -39,7 +44,25 @@ def print_matrix(seq1, seq2):
     #sequence_comparison(seq1, seq2)
     #print("%s\n%s" % sequence_comparison(seq1, seq2))
 
+def global_max(matrix):
+    max_ij = []
+    #max_j = []
+    max_val = 0
+    for i in range(len(matrix) - 1):
+        for j in range(len(matrix[0]) - 1):
+            if matrix[i][j] > max_val:
+                max_val = matrix[i][j]
+                max_ij = [(i, j)]
+                #max_j = [j]
+            elif matrix[i][j] == max_val:
+                max_ij.append((i, j))
+                #max_j.append(j)
+    #return (max_i, max_j)
+    return max_ij
+
 def local_maxes(matrix):
+    """Computes local maxes. keeping code for later but not going to be used
+    in this"""
     local_max = []
     for i in range(1, len(matrix) - 1):
         for j in range(1, len(matrix[0]) - 1):
@@ -75,6 +98,44 @@ def local_maxes(matrix):
     return local_max
 
 def sequence_comparison(seqi, seqj):
+    matrix = build_matrix(seqi, seqj)
+    maxes = global_max(matrix)
+    #seqi_cor = []
+    #seqj_cor = []
+    seqi_cor = ''
+    seqj_cor = ''
+    max_seqs = []
+    for i, j in maxes:
+        while matrix[i][j] != 0:
+            choices = [matrix[i-1][j-1], matrix[i][j-1], matrix[i-1][j]]
+            max_choice = max(choices)
+            if max_choice == choices[0] or seqi[i] == seqj[j]:
+                #print "match", i, j, max_choice, choices
+                #seqi_cor.append(seqi[i])
+                seqi_cor = ''.join([seqi[i], seqi_cor])
+                #seqj_cor.append(seqj[j])
+                seqj_cor = ''.join([seqj[j], seqj_cor])
+                i -= 1
+                j -= 1
+            elif max_choice == choices[1]:
+                #print "left ", i, j, max_choice, choices
+                #seqi_cor.append('-')
+                seqi_cor = ''.join(['-', seqi_cor])
+                #seqj_cor.append(seqj[j])
+                seqj_cor = ''.join([seqj[j], seqj_cor])
+                j -= 1
+            else:
+                #print "up   ", i, j, max_choice, choices
+                #seqi_cor.append(seqi[i])
+                seqi_cor = ''.join([seqi[i], seqi_cor])
+                #seqj_cor.append('-')
+                seqj_cor = ''.join(['-', seqj_cor])
+                i -= 1
+        #print seqi_cor, '\n', seqj_cor
+        max_seqs.append((seqi_cor, seqj_cor))
+    return max_seqs
+
+def sequence_comparison_prev(seqi, seqj):
     matrix = build_matrix(seqi, seqj)
     local_max = local_maxes(matrix)
     removals = []
@@ -119,43 +180,6 @@ def sequence_comparison(seqi, seqj):
     for seq in pairs:
         print seq[0], '\n', seq[1]
 
-def sequence_comparison_prev(seqi, seqj):
-    """Uses build matrix to find the collision between seq1 and seq2"""
-    matrix = build_matrix(seqi, seqj)
-    max_j = len(matrix) - matrix[-1][::-1].index(max(matrix[-1])) - 1
-    bottom_row = [matrix[i][-1] for i in range(len(matrix))]
-    max_i = len(bottom_row) - bottom_row[::-1].index(max(bottom_row)) - 1
-    if matrix[-1][max_j] > bottom_row[max_i]:
-        max_i = len(matrix) - 1
-    else:
-        max_j = len(matrix[-1]) - 1
-    i = max_i
-    j = max_j
-    print "max: ", max_i, max_j
-    seqi_corrected = ''
-    seqj_corrected = ''
-    while matrix[i][j] != 0:
-        choices = [matrix[i-1][j-1], matrix[i][j-1], matrix[i-1][j]]
-        if max(choices) == choices[0]:
-            seqi_corrected = "%s%s" % (seqj[i], seqi_corrected)
-            seqj_corrected = "%s%s" % (seqi[j], seqj_corrected)
-            print seqi_corrected, seqj_corrected 
-            i = i-1
-            j = j-1
-        elif max(choices) == choices[1]:
-            seqi_corrected = "-%s" % seq1_corrected
-            seqj_corrected = "%s%s" % (seqj[j-1], seqj_corrected)
-            print seqi_corrected, seqj_corrected 
-            j = j-1
-        else:
-            seqi_corrected = "%s%s" % (seqi[i-1], seqi_corrected)
-            seqj_corrected = "-%s" % seqj_corrected
-            print seqi_corrected, seqj_corrected 
-            i = i-1
-        print i, j
-    return (seqi_corrected, seqj_corrected)
-
-
 if __name__ == "__main__":
     if argc > 2:
         print(usage)
@@ -174,8 +198,9 @@ if __name__ == "__main__":
         print(error)
         sys.exit(1)
 
-    #print sequence_comparison(data[0], data[1])
-    print_matrix(data[0], data[1])
-    print local_maxes(build_matrix(data[0], data[1]))
-    print_matrix(data[1], data[0])
-    print local_maxes(build_matrix(data[1], data[0]))
+    print sequence_comparison(data[0], data[1])
+    #print_matrix(data[0], data[1])
+    print sequence_comparison(data[1], data[0])
+    #print global_max(build_matrix(data[0], data[1]))
+    #print_matrix(data[1], data[0])
+    #print global_max(build_matrix(data[1], data[0]))
