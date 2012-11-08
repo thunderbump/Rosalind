@@ -28,17 +28,18 @@ if __name__ == "__main__":
         print(error)
         sys.exit(1)
 
-    (cor_seq1, cor_seq2) = smith_waterman.sequence_comparison(seq1, seq2)
-    (cor_seq2x, cor_seq1x) = smith_waterman.sequence_comparison(seq2, seq1)
+    lists = smith_waterman.sequence_comparison(seq1, seq2)
+    #(cor_seq2x, cor_seq1x) = smith_waterman.sequence_comparison(seq2, seq1)
     substring = ""
     substringx = ""
-    for index in range(len(cor_seq1)):
-        if(cor_seq1[index] == cor_seq2[index]):
-            substring = "%s%s" % (substring, cor_seq1[index])
-    for index in range(len(cor_seq1x)):
-        if(cor_seq1x[index] == cor_seq2x[index]):
-            substringx = "%s%s" % (substring, cor_seq1x[index])
-    if len(substring) > len(substringx):
+    for cor_seq1, cor_seq2 in lists:
+        for index in range(len(cor_seq1)):
+            if(cor_seq1[index] == cor_seq2[index]):
+                substring = "%s%s" % (substring, cor_seq1[index])
+        #for index in range(len(cor_seq1x)):
+        #    if(cor_seq1x[index] == cor_seq2x[index]):
+        #        substringx = "%s%s" % (substring, cor_seq1x[index])
+        #if len(substring) > len(substringx):
         print substring
-    else:
-        print substringx
+        #else:
+        #    print substringx

@@ -98,6 +98,8 @@ def local_maxes(matrix):
     return local_max
 
 def sequence_comparison(seqi, seqj):
+    seqi = ''.join(['-', seqi])
+    seqj = ''.join(['-', seqj])
     matrix = build_matrix(seqi, seqj)
     maxes = global_max(matrix)
     #seqi_cor = []
@@ -190,7 +192,7 @@ if __name__ == "__main__":
         data = []
         data_file = open(data_file_loc)
         for line in data_file:
-            data.append("-%s" % line.strip())
+            data.append(line.strip())
         print data
         data_file.close()
     except IOError, error:

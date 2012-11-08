@@ -25,13 +25,14 @@ Solved  Ex     abbv  long name
      Y  19  :  prob  Introduction to Probability
         20  :  rear  Reversal Distance
      Y  21  :  sign  Enumerating Oriented Gene Orderings
+        21.0:  spec  Inferring Protein from Spectrum
      Y  22  :  sseq  Finding a Spliced Motif
         23  :  tree  Completing a Tree
         23.0:  corr  Error Correction in Reads
      Y  23.1:  eval  Introduction to Expected Value
         23.2:  inod  Counting Phylogenetic Ancestors
      Y  24  :  kmer  k-Mer Composition
-        25  :   kmp  Speeding Up Motif Finding
+     Y  25  :   kmp  Speeding Up Motif Finding
         26  :  lcsq  Finding a Shared Spliced Motif
      Y  27  :  lexv  Ordering Strings of Varying Length Lexicographically
 ```
