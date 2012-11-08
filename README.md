@@ -25,7 +25,7 @@ Solved  Ex     abbv  long name
      Y  19  :  prob  Introduction to Probability
         20  :  rear  Reversal Distance
      Y  21  :  sign  Enumerating Oriented Gene Orderings
-        21.0:  spec  Inferring Protein from Spectrum
+     Y  21.0:  spec  Inferring Protein from Spectrum
      Y  22  :  sseq  Finding a Spliced Motif
         23  :  tree  Completing a Tree
         23.0:  corr  Error Correction in Reads
