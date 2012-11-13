@@ -33,36 +33,20 @@ def analyze_spec(parent, ions):
         nearest_candidate = None
         tolerance = 1
         for candidate in weight_dict.keys():
-            if abs(pairs[index + 1][0] - pairs[index][0] 
-                                       - candidate) < tolerance:
+            if round(abs(pairs[index + 1][0] - pairs[index][0] 
+                         - candidate), 3) == 0:
                 tolerance = abs(pairs[index + 1][0] - pairs[index][0] 
                                 - candidate)
                 nearest_candidate = candidate
-                print nearest_candidate, weight_dict[nearest_candidate], "--------------", index, pairs[index][0], pairs[index + 1][0]
         if not nearest_candidate:
             pairs[index + 1] = (pairs[index + 1][1], pairs[index + 1][0])
             pairs.sort()
+            index = 0
+            sequence = ''
         else:
-            print pairs
             sequence = ''.join([sequence, weight_dict[nearest_candidate]])
             index += 1
-            print "--"
     print sequence
-    #index = 0
-    #sequence = ''
-    #while index < len(pairs) - 1:
-    #    closest_candidate = None
-    #    distance = 400
-    #    for gene_weight in weight_dict.keys():
-    #        if abs(pairs[index + 1][0] - pairs[index][0] 
-    #               - gene_weight) < distance:
-    #            distance = abs(pairs[index + 1][0] - pairs[index][0]
-    #                           - gene_weight)
-    #            closest_candidate = weight_dict[gene_weight]
-    #            print closest_candidate, pairs[index + 1][0], pairs[index][0]
-    #    sequence = ''.join([sequence, closest_candidate])
-    #    index += 1
-    #print sequence
 
 if __name__ == "__main__":
     if argc > 2:
