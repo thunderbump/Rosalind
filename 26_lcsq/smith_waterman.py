@@ -48,8 +48,8 @@ def global_max(matrix):
     max_ij = []
     #max_j = []
     max_val = 0
-    for i in range(len(matrix) - 1):
-        for j in range(len(matrix[0]) - 1):
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
             if matrix[i][j] > max_val:
                 max_val = matrix[i][j]
                 max_ij = [(i, j)]
@@ -97,44 +97,42 @@ def local_maxes(matrix):
 
     return local_max
 
-def sequence_comparison(seqi, seqj):
+def sequence_comparison(seqi, seqj, start=False):
     seqi = ''.join(['-', seqi])
     seqj = ''.join(['-', seqj])
     matrix = build_matrix(seqi, seqj)
-    maxes = global_max(matrix)
+    if start:
+        maxes = global_max(matrix)
+    else:
+        maxes = global_max(matrix)
     #seqi_cor = []
     #seqj_cor = []
     seqi_cor = ''
     seqj_cor = ''
     max_seqs = []
     for i, j in maxes:
+        seqi_cor = ''
+        seqj_cor = ''
         while matrix[i][j] != 0:
             choices = [matrix[i-1][j-1], matrix[i][j-1], matrix[i-1][j]]
             max_choice = max(choices)
+            #if start:
+               #print(matrix[i][j], i, j, seqi, seqj, matrix)
             if max_choice == choices[0] or seqi[i] == seqj[j]:
-                #print "match", i, j, max_choice, choices
-                #seqi_cor.append(seqi[i])
                 seqi_cor = ''.join([seqi[i], seqi_cor])
-                #seqj_cor.append(seqj[j])
                 seqj_cor = ''.join([seqj[j], seqj_cor])
                 i -= 1
                 j -= 1
             elif max_choice == choices[1]:
-                #print "left ", i, j, max_choice, choices
-                #seqi_cor.append('-')
                 seqi_cor = ''.join(['-', seqi_cor])
-                #seqj_cor.append(seqj[j])
                 seqj_cor = ''.join([seqj[j], seqj_cor])
                 j -= 1
             else:
-                #print "up   ", i, j, max_choice, choices
-                #seqi_cor.append(seqi[i])
                 seqi_cor = ''.join([seqi[i], seqi_cor])
-                #seqj_cor.append('-')
                 seqj_cor = ''.join(['-', seqj_cor])
                 i -= 1
-        #print seqi_cor, '\n', seqj_cor
         max_seqs.append((seqi_cor, seqj_cor))
+    index = 0
     return max_seqs
 
 def sequence_comparison_prev(seqi, seqj):

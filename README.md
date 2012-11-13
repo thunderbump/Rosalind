@@ -34,5 +34,6 @@ Solved  Ex     abbv  long name
      Y  24  :  kmer  k-Mer Composition
      Y  25  :   kmp  Speeding Up Motif Finding
         26  :  lcsq  Finding a Shared Spliced Motif
+        26.0:  full  Inferring Peptide from Full Spectrum
      Y  27  :  lexv  Ordering Strings of Varying Length Lexicographically
 ```
