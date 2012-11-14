@@ -36,4 +36,13 @@ Solved  Ex     abbv  long name
         26  :  lcsq  Finding a Shared Spliced Motif
      Y  26.0:  full  Inferring Peptide from Full Spectrum
      Y  27  :  lexv  Ordering Strings of Varying Length Lexicographically
+        28  :  lrep  Finding the Longest Multiple Repeat
+        29  :  pdst  Creating a Distance Matrix
+        30  :  sset  Counting Subsets
+        31  :  conv  Comparing Spectra with the Spectral Convolution
+        32  :  edit  Edit Distance
+        33  :  nwck  Tree Distance Using Nerwick Format
+        34  :  rnas  Counting RNA Secondary Structures
+        35  :  seto  Introduction to Set Operations
+        36  :  sgra  Using the Spectrum Graph to Infer Peptides
 ```

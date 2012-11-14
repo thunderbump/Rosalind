@@ -46,32 +46,64 @@ if __name__ == "__main__":
         print(error)
         sys.exit(1)
 
+    repeated = []
     non_repeated = []
-    compliment = []
+    #compliment = []
     #find compliments
-    for string in data:
-        compliment.append(revc(string))
+    #for string in data:
+    #    compliment.append(revc(string))
 
-    for string in data:
-        if (string not in data[data.index(string) + 1:]
-           ) and string not in compliment:
-            non_repeated.append(string)
+    idx = 0
+    #print len(data), "---"
+    while idx < len(data):
+    #    print idx
+        if data[idx] in data[idx + 1:] or revc(data[idx]) in data: #or (
+           #revc(data[idx])[::-1] in data or data[idx][::-1] in data):
+            repeated.append(data[idx])
+            #compliment = [sequence for sequence in compliment 
+            #              if sequence != data[idx] and 
+            #              sequence != revc(data[idx])]
+            data = [sequence for sequence in data if sequence != data[idx] and
+                    sequence != revc(data[idx])]
+    #        print len(data), "--"
+        else:
+            non_repeated.append(data[idx])
+            idx += 1
+    #print len(data), len(non_repeated), "!---"
+    #for string in data:
+    #    if (string not in data[data.index(string) + 1:]
+    #       ) and string not in compliment:
+    #        non_repeated.append(string)
     for string in non_repeated:
         broken = False
-        for candidate in data:
+        for candidate in repeated:
+            #print revc(candidate), hamm(string, revc(candidate))
+            #print string
+            #print candidate, hamm(string, candidate)
+            #raw_input()
             if string == candidate:
                 continue
             if hamm(string, candidate) == 1:
                 #print string
                 #print candidate
-                print("".join([string, '->', candidate]))
+                print(string + '->' + candidate)
+                #data = [seq for seq in data if seq != candidate]
+                #broken = True
+                broken = True
+                break
+            if hamm(string, revc(candidate)) == 1:
+                print(string + '->' + revc(candidate))
+                #data = [seq for seq in data if seq != candidate]
                 broken = True
                 break
         if not broken:
-            for candidate in compliment:
-                if hamm(string, candidate) == 1:
-                    print("".join([string, "->", candidate]))
+            print string, "pair not found"
+        
+        #if not broken:
+        #    for candidate in compliment:
+        #        if hamm(string, candidate) == 1:
+        #            print("".join([string, "->", candidate]))
                     #print(string)
                     #print(candidate)
-                    break
+        #            break
             
