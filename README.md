@@ -27,7 +27,7 @@ Solved  Ex     abbv  long name
      Y  21  :  sign  Enumerating Oriented Gene Orderings
      Y  21.0:  spec  Inferring Protein from Spectrum
      Y  22  :  sseq  Finding a Spliced Motif
-        23  :  tree  Completing a Tree
+     Y  23  :  tree  Completing a Tree
         23.0:  corr  Error Correction in Reads
      Y  23.1:  eval  Introduction to Expected Value
         23.2:  inod  Counting Phylogenetic Ancestors
