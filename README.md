@@ -37,7 +37,7 @@ Solved  Ex     abbv  long name
      Y  26.0:  full  Inferring Peptide from Full Spectrum
      Y  27  :  lexv  Ordering Strings of Varying Length Lexicographically
         28  :  lrep  Finding the Longest Multiple Repeat
-        29  :  pdst  Creating a Distance Matrix
+     Y  29  :  pdst  Creating a Distance Matrix
         30  :  sset  Counting Subsets
         31  :  conv  Comparing Spectra with the Spectral Convolution
         32  :  edit  Edit Distance
