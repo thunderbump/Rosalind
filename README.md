@@ -40,9 +40,21 @@ Solved  Ex     abbv  long name
      Y  29  :  pdst  Creating a Distance Matrix
      Y  30  :  sset  Counting Subsets
         31  :  conv  Comparing Spectra with the Spectral Convolution
+        31.0:  ctbl  Creating a Character Table
+        31.1:  dbru  Constructing a De Bruijn Graph
         32  :  edit  Edit Distance
+        32.0:  nkew  Newick Format with Edge Weights
         33  :  nwck  Tree Distance Using Nerwick Format
         34  :  rnas  Counting RNA Secondary Structures
-        35  :  seto  Introduction to Set Operations
+        34.0:  suff  Encoding Suffix Trees
+        34.1:  cstr  Creating a Character Table from Genetic Strings
+        34.2:  cunr  Counting Unrooted Binary Trees
+        34.3:  edta  Edit Distance Allignment
+        34.4:  ling  Linguistic Complexity of a Genome
+        34.5:  mrep  Identifying Maximal Repeats
+        34.6:  pcov  Genome Assembly with Perfect Coverage
+        34.7:  prsm  Matching a Spectrum to a Protein
+        34.8:  qrt   Quartets
+     Y  35  :  seto  Introduction to Set Operations
         36  :  sgra  Using the Spectrum Graph to Infer Peptides
 ```
