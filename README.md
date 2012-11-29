@@ -38,7 +38,7 @@ Solved  Ex     abbv  long name
      Y  27  :  lexv  Ordering Strings of Varying Length Lexicographically
         28  :  lrep  Finding the Longest Multiple Repeat
      Y  29  :  pdst  Creating a Distance Matrix
-        30  :  sset  Counting Subsets
+     Y  30  :  sset  Counting Subsets
         31  :  conv  Comparing Spectra with the Spectral Convolution
         32  :  edit  Edit Distance
         33  :  nwck  Tree Distance Using Nerwick Format
