@@ -39,7 +39,7 @@ Solved  Ex     abbv  long name
         28  :  lrep  Finding the Longest Multiple Repeat
      Y  29  :  pdst  Creating a Distance Matrix
      Y  30  :  sset  Counting Subsets
-        31  :  conv  Comparing Spectra with the Spectral Convolution
+     Y  31  :  conv  Comparing Spectra with the Spectral Convolution
         31.0:  ctbl  Creating a Character Table
         31.1:  dbru  Constructing a De Bruijn Graph
         32  :  edit  Edit Distance
