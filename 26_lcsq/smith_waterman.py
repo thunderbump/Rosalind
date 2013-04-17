@@ -104,6 +104,7 @@ def sequence_comparison(seqi, seqj, start=False):
     if start:
         maxes = global_max(matrix)
     else:
+        #maxes = [(len(seqi) - 1, len(seqj) - 1)]
         maxes = global_max(matrix)
     #seqi_cor = []
     #seqj_cor = []
@@ -133,6 +134,7 @@ def sequence_comparison(seqi, seqj, start=False):
                 i -= 1
         max_seqs.append((seqi_cor, seqj_cor))
     index = 0
+    #print max_seqs
     return max_seqs
 
 def sequence_comparison_prev(seqi, seqj):
@@ -198,9 +200,14 @@ if __name__ == "__main__":
         print(error)
         sys.exit(1)
 
-    print sequence_comparison(data[0], data[1])
+    pnt = sequence_comparison(data[0], data[1])
+    print pnt[0][0]
+    print pnt[0][1]
+    print
     #print_matrix(data[0], data[1])
-    print sequence_comparison(data[1], data[0])
+    pnt2 = sequence_comparison(data[1], data[0])
+    print pnt2[0][0]
+    print pnt2[0][1]
     #print global_max(build_matrix(data[0], data[1]))
     #print_matrix(data[1], data[0])
     #print global_max(build_matrix(data[1], data[0]))
