@@ -19,8 +19,9 @@ def date_lookup(organism, beg_date, end_date):
     
     database = "nucleotide"
     Entrez.email = email
-    handle = Entrez.esearch(db=database, term=''.join([organism, "[Organism] AND ",
-                            beg_date, ':', end_date, "[Publication Date]"]))
+    handle = Entrez.esearch(db=database, term=''.join([organism, \
+                            "[Organism] AND ", beg_date, ':', end_date, \
+                            "[Publication Date]"]))
     record = Entrez.read(handle)
     print(record['Count'])
     return
